@@ -74,11 +74,11 @@ for ($sAddi = 1; $sAddi <1000; $sAddi=$sAddi+1) {
     }
 };
 
-system("mkdir data$sAddi");
-system("cp run_cpu.pl data$sAddi/");
-system("mv input.dat data$sAddi/");
-system("cp nonreciprocal_self_assembly_MD.cpp data$sAddi");
-chdir("data$sAddi");
+system("mkdir ../data$sAddi");
+system("cp run_cpu.pl ../data$sAddi/");
+system("mv input.dat ../data$sAddi/");
+system("cp nonreciprocal_self_assembly_MD.cpp ../data$sAddi");
+chdir("../data$sAddi");
 system("g++ -O3 -lm nonreciprocal_self_assembly_MD.cpp -o nonreciprocal_self_assembly_MD$sAddi");
 system("./nonreciprocal_self_assembly_MD$sAddi");
 
