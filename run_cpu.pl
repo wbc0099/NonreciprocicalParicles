@@ -16,7 +16,7 @@ $Ly          = 60;             # Boundary width.
 $LCell       = 4;
 $LSkin       = 0.4;
 $tStart      = 0;
-$tStop       = 1000;             #
+$tStop       = 10000;             #
 $tStep       = 0.01;     #
 $tExpo       = 10;         # Time resolution of output
 $tResetCLNL    = 0.1;
@@ -90,5 +90,6 @@ else { system("mkdir -p ../conf-data/$direData"); }
 chdir("../");
 system("mv data$sAddi/* conf-data/$direData");
 system("rm -rf data$sAddi");
+system("python3 source/plot.py conf-data/$direData");
 
 #system("python plot.py $direData")
