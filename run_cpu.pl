@@ -8,15 +8,15 @@ $BounCond    = 2;             # 1-Rigid, 2-Periodic
 $ExpoData    = 1;             # 1-only rho, -1-all fields
 $CLorNL      = 1;             # 1-Cell List, 2-Neighbor List
 $adapTStep   = 0;             # 
-$Na=500;
-$Nb=1200;
+$Na=182;
+$Nb=1818;
 $NNeighb     = 21;
 $Lx          = 60;             # Boundary width.
 $Ly          = 60;             # Boundary width.
 $LCell       = 4;
 $LSkin       = 0.4;
 $tStart      = 0;
-$tStop       = 10000;             #
+$tStop=100;             #
 $tStep       = 0.01;     #
 $tExpo       = 10;         # Time resolution of output
 $tResetCLNL    = 0.1;
@@ -68,7 +68,7 @@ $proportion = sprintf("%.2f", $Na/$Nb);
 $direData="N$N--proportion$proportion--kba$kba";
 
 for ($sAddi = 1; $sAddi <1000; $sAddi=$sAddi+1) {
-    if (-d "data$sAddi") {
+    if (-d "../data$sAddi") {
     } else {
 	last;
     }
@@ -91,5 +91,6 @@ chdir("../");
 system("mv data$sAddi/* conf-data/$direData");
 system("rm -rf data$sAddi");
 system("python3 source/plot.py conf-data/$direData");
+system("vlc conf-data/$direData.avi")
 
 #system("python plot.py $direData")
