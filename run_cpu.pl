@@ -8,13 +8,8 @@ $BounCond    = 2;             # 1-Rigid, 2-Periodic
 $ExpoData    = 1;             # 1-only rho, -1-all fields
 $CLorNL      = 1;             # 1-Cell List, 2-Neighbor List
 $adapTStep   = 0;             # 
-<<<<<<< HEAD
-$Na=429;
-$Nb=1071;
-=======
 $Na=457;
 $Nb=1143;
->>>>>>> f33c8b4 (Initial commit)
 $NNeighb     = 21;
 $Lx          = 50;             # Boundary width.
 $Ly          = 50;             # Boundary width.
@@ -96,10 +91,5 @@ chdir("../");
 system("mv data$sAddi/* conf-data/$direData");
 system("rm -rf data$sAddi");
 system("python3 source/plot.py conf-data/$direData");
-<<<<<<< HEAD
-system("vlc conf-data/$direData.avi")
-=======
 #system("vlc conf-data/$direData.avi")
->>>>>>> f33c8b4 (Initial commit)
-
 #system("python plot.py $direData")
