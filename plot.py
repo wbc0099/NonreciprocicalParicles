@@ -8,6 +8,7 @@ import sys
 
 displacementX=5
 displacementY=-10
+blankAxis=0
 
 path0 = './'
 
@@ -40,15 +41,20 @@ for i in range(Nt+1):
     plt.scatter(data_i[Na:Na+Nb-1,0],data_i[Na:Na+Nb-1,1], s=40, c='b',marker='o')
     plt.xlim(0,Lx)
     plt.ylim(0,Ly)
-    plt.xticks(fontsize=30)
-    plt.yticks(fontsize=30)
-    plt.xlabel('x',fontsize=30)
-    plt.ylabel('y',fontsize=30)
-    title_fontdict = {
-        'fontsize': 30,  # 字体大小
-        'fontweight': 'bold'  # 字体粗细
-        }
-    plt.title("proportion={:.2f} T={}".format(Na/Nb, i*tStop), fontdict=title_fontdict)
+    if blankAxis==1:
+        plt.xticks(fontsize=30)
+        plt.yticks(fontsize=30)
+        plt.xlabel('x',fontsize=30)
+        plt.ylabel('y',fontsize=30)
+        title_fontdict = {
+            'fontsize': 30,  # 字体大小
+            'fontweight': 'bold'  # 字体粗细
+            }
+        plt.title("proportion={:.2f} T={}".format(Na/Nb, i*tStop), fontdict=title_fontdict)
+    if blankAxis==0:
+        plt.axis('off')
+        plt.xticks([])
+        plt.yticks([])
     plt.savefig(path + '/temp/fig_'+str(i)+'.png')
     plt.close() 
 
