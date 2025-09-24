@@ -3,7 +3,7 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 
-path="../data/psPhi"
+path="../conf-data/"
 items=os.listdir(path)
 items=[item for item in items if item.startswith("N")]
 items=sorted(items,key=lambda x:

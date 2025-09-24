@@ -7,7 +7,7 @@ mkdir -p ../conf-data/log
 for i in $(seq 2 2 18); do
 	for j in $(seq 1 2 17); do
 	#for j in 1 5 9 13 17; do
-		Nb=$((N/(i+10)*10))
+		Nb=$((N*10/(i+10)))
 		Na=$((N-Nb))
 		kba=$(echo "scale=2; $j/100" | bc)
 		sed -i "s!Na=*[0-9]*.[0-9]*;!Na=${Na};!" ./run_cpu.pl

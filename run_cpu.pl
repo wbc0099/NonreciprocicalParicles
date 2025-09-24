@@ -8,8 +8,10 @@ $BounCond    = 2;             # 1-Rigid, 2-Periodic
 $ExpoData    = 1;             # 1-only rho, -1-all fields
 $CLorNL      = 1;             # 1-Cell List, 2-Neighbor List
 $adapTStep   = 0;             # 
-$Na=1030;
-$Nb=570;
+$N=1600;
+$Prop=0.8;
+$Na=$(echo "$N*10/($Prop+10)" | bc);
+$Nb=$((N-Prop));
 $NNeighb     = 21;
 $Lx          = 50;             # Boundary width.
 $Ly          = 50;             # Boundary width.
@@ -17,8 +19,8 @@ $LCell       = 4;
 $LSkin       = 0.4;
 $tStart      = 0;
 $tStop=10000;             #
-$tStep       = 0.01;     #
-$tExpo       = 10;         # Time resolution of output
+$tStep       = 0.005;     #
+$tExpo       = 10.0;         # Time resolution of output
 $tResetCLNL    = 0.1;
 $ReadSuccess = -8848;        # Used to check if input file is correctly read.
 
@@ -90,6 +92,6 @@ else { system("mkdir -p ../conf-data/$direData"); }
 chdir("../");
 system("mv data$sAddi/* conf-data/$direData");
 system("rm -rf data$sAddi");
-system("python3 source/plot.py conf-data/$direData");
+#system("python3 source/plot.py conf-data/$direData");
 #system("vlc conf-data/$direData.avi")
 #system("python plot.py $direData")

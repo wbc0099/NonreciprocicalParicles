@@ -28,7 +28,7 @@ Nb = int(data[6])
 Lx = int(data[8])
 Ly = int(data[9])
 tStop = int(data[13])
-tExport = int(data[15])
+tExport = float(data[15])
 Nt = int(tStop/tExport)
 text_split = path1[:len(path1)//2] + '\n' + path1[len(path1)//2:]
 
