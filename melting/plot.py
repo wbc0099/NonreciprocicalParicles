@@ -37,8 +37,8 @@ for i in range(Nt+1):
     data_i[:,0] = (data_i[:,0]+displacementX)%Lx
     data_i[:,1] = (data_i[:,1]+displacementY)%Ly
     plt.figure(figsize=(10, 10))
-    plt.scatter(data_i[0:Na-1,0],data_i[0:Na-1,1],s=40 ,c='r',marker='o')
-    plt.scatter(data_i[Na:Na+Nb-1,0],data_i[Na:Na+Nb-1,1], s=40, c='b',marker='o')
+    plt.scatter(data_i[0:Na-1,0],data_i[0:Na-1,1],s=120 ,c='r',marker='o')
+    plt.scatter(data_i[Na:Na+Nb-1,0],data_i[Na:Na+Nb-1,1], s=120, c='b',marker='o')
     plt.xlim(0,Lx)
     plt.ylim(0,Ly)
     if blankAxis==1:
