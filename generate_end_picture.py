@@ -7,7 +7,7 @@ def plot_last_frame():
     # 关键词
     keyword1 = "proportion"  # 读取文件夹关键词
     keyword2 = "conf"  # 位置坐标关键词
-    size = 30  # 绘图点大小
+    size = 40  # 绘图点大小
 
     # 获取当前目录
     current_dir = os.getcwd()
@@ -50,7 +50,7 @@ def plot_last_frame():
         r_b = r_b[(r_b[:, 0] >= 0) & (r_b[:, 0] <= 60) & (r_b[:, 1] >= 0) & (r_b[:, 1] <= 60)]
 
         # 绘图
-        plt.figure(figsize=(8, 8))
+        plt.figure(figsize=(10, 10))
 
         # 动态设置坐标轴范围
         x_min, x_max = min(r_a[:, 0].min(), r_b[:, 0].min()), max(r_a[:, 0].max(), r_b[:, 0].max())

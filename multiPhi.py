@@ -18,6 +18,7 @@ dpi = 300
 #times=fm.FontProperties(fname=fontPath)
 #plt.rcParams["font.family"]=times.get_name()
 plt.rcParams["font.family"]="Times New Roman"
+plt.rcParams["font.size"]=20
 plt.rc('text',usetex=True)
 
 # -------------------- Collect folders -------------------
@@ -106,21 +107,25 @@ im = ax.imshow(
 )
 
 # Centered ticks: use integer indices (0..Nx-1, 0..Ny-1)
-ax.set_xticks(np.arange(Nx))
-ax.set_yticks(np.arange(Ny))
+ax.set_xticks(np.arange(1,Nx-1,2))
+ax.set_yticks(np.arange(1,Ny-1,2))
 
 # Label ticks with actual parameter values
 # (format as you like; here keep raw or use f"{v:.3g}")
-ax.set_xticklabels([f"{v:g}" for v in prop_unique], rotation=45, ha="right")
-ax.set_yticklabels([f"{v:g}" for v in kba_unique])
+xticks=[0.4,0.8,1.2,1.6]
+yticks=[0.03,0.07,0.11,0.15]
+ax.set_xticklabels([f"{v:g}" for v in xticks], rotation=45, ha="right")
+ax.set_yticklabels([f"{v:g}" for v in yticks])
+# ax.set_xticks([0.4,0.8,1.2,1.6])
+# ax.set_yticks([0.03,0.07,0.11,0.15])
 
-ax.set_xlabel("Proportion")
-ax.set_ylabel("kba")
+ax.set_xlabel(r"$\eta$")
+ax.set_ylabel(r"$k_{ba}$")
 
 cbar = plt.colorbar(im, ax=ax)
-cbar.set_label("Scalar value")  # rename if you have a better name
+cbar.set_label(r"$\bar{\Psi}$")  # rename if you have a better name
 
-ax.set_title("Heatmap of value vs (proportion, kba)")
+#ax.set_title("Heatmap of value vs (proportion, kba)")
 fig.tight_layout()
 plt.savefig(out_png, dpi=dpi)
 plt.close()
