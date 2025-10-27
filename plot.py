@@ -76,4 +76,4 @@ for i in range(Nt+1):
 # 释放视频编写器
 video.release()
 
-os.system("vlc " + video_name)
+# os.system("vlc " + video_name)
