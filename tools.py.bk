@@ -182,79 +182,20 @@ def makeVideo(dataPath,startStr,endStr,
         shutil.rmtree(picturePath)
     else:
         print(f"Pictures saved in {picturePath}")
-
-def readAllDatas(path,includeString,startstr,endstr,readStep=1):
-    item_names=os.listdir(path)
-    item_names=[files for files in item_names if files.endswith(endstr) and files.startswith(startstr)]
-    item_names=sorted(item_names, key=lambda x: int(x.split('_')[1].split('.')[0]))
-    print("item_names", item_names)
-    data_=[]
-    i=0
-    for item in item_names:
-        if i%readStep==0:
-            data=readFile(os.path.join(path,item),printSize=0)
-            data_.append(data)
-        i+=1
-    data_=np.array(data_)
-    print(data_.shape)
-
-# def RDF(path, data, lx, ly):
-#     r_=[]
-#     for i in range(len(data)):
-#         for j in range(len(data)):
-#             if i != j:
-#                 r=distancePBC(data[i][0],data[j][0],data[i][1],data[j][1],lx,ly)
-#                 r_.append(r)
-#     r_=np.array(r_)
-#     hist,bins=np.histogram(r_,bins=200)        
-#     shellArea=np.pi*(bins[1:]**2-bins[:-1]**2)
-#     RDF=hist*lx*ly/shellArea/len(data)
-#     # print(RDF)
-#     r_center = (bins[1:] + bins[:-1]) / 2
-#     plt.plot(r_center, RDF)
-#     plt.xlabel('r')
-#     plt.ylabel('g(r)')
-#     if path:
-#         plt.savefig(path+"RDF.png")
-#     # plt.show()
-
-def RDF(path, data, lx, ly, r_cut=None):
-    r_=[]
-    for i in range(len(data)):
-        for j in range(len(data)):
-            if i != j:
-                r=distancePBC(data[i][0],data[j][0],data[i][1],data[j][1],lx,ly)
-                if r_cut is None or r < r_cut:
-                    r_.append(r)
-    r_=np.array(r_)
-    if r_cut is None:
-        r_cut = np.max(r_)
-    hist,bins=np.histogram(r_,bins=200, range=(0, r_cut))        
-    shellArea=np.pi*(bins[1:]**2-bins[:-1]**2)
-    RDF=hist*lx*ly/shellArea/len(data)
-    
-    r_center = (bins[1:] + bins[:-1]) / 2
-    plt.plot(r_center, RDF, "-k")
-    plt.xlabel('r')
-    plt.ylabel('g(r)')
-    if path:
-        plt.savefig(path+"RDF.png")
-    plt.show()
+            
 
 if __name__ == "__main__":
     data=readFile("./conf_200.dat")
-    # x=data[:,0]
-    # y=data[:,1]
-    # x1=x[:456]
-    # y1=y[:456]
-    # x2=x[456:]
-    # y2=y[456:]
-    # plotParticles(x1,y1,60,60,"./figure.jpg",x1=x2,y1=y2)
-    # print(distancePBC(1,9,1,9,10,10))
-    # DBSCANPeriodic(data,60,60,3,20)
-    # phi(data[0:456],60,60,1.2,"./phi6.png")
-    # print(readParameter("conf-data/test.dat",["python","rust"]))
-    # makeVideo("./conf-data","conf_",".dat",60,60,plotStep=10,particleTypeMode=456)
-    # readAllDatas("conf-data","conf","conf",".dat")
-    RDF("./",data,60,60,15)
-
+    x=data[:,0]
+    y=data[:,1]
+    x1=x[:456]
+    y1=y[:456]
+    x2=x[456:]
+    y2=y[456:]
+    print("x1=",x1,"y1=",y1,"x2=",x2,"y2=",y2)
+    plotParticles(x1,y1,60,60,"./figure.jpg",x1=x2,y1=y2)
+    print(distancePBC(1,9,1,9,10,10))
+    DBSCANPeriodic(data,60,60,3,20)
+    phi(data[0:456],60,60,1.2,"./phi6.png")
+    print(readParameter("conf-data/test.dat",["python","rust"]))
+    makeVideo("./conf-data","conf_",".dat",60,60,plotStep=10,particleTypeMode=456)

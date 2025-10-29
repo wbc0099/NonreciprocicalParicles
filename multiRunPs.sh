@@ -5,7 +5,7 @@ mkdir -p ../conf-data
 mkdir -p ../conf-data/log
 
 for i in $(seq 2 1 18); do
-	for j in $(seq 1 1 5); do
+	for j in $(seq 11 1 17); do
 # for i in  5 10 40 80; do
 	# for j in 1 5 20; do
 		# Nb=$((N*100/(i+100)))

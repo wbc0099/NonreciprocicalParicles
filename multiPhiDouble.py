@@ -5,9 +5,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 import tools  # your own helpers
 from matplotlib import font_manager as fm
+import sys
 
 # ------------------------ Config ------------------------
-path = "../conf-data/"
+# path = "../conf-data/"
+path=sys.argv[1]
 # Optional: image size & output
 figsize = (6.0, 5.0)
 out_png = "./PS.png"
@@ -44,7 +46,7 @@ for item in items:
     print(f"{item}  -> proportion={proportion}, kba={kba}")
 
     # Files
-    data_path = os.path.join(path, item, "conf_1000.dat")
+    data_path = os.path.join(path, item, "conf_200.dat")
     rc_path   = os.path.join(path, item, "run_cpu.pl")
 
     # Read data & parameters
@@ -58,13 +60,13 @@ for item in items:
     # Compute order parameters (no images drawn)
     phiRed = tools.phi(
         data[:redParticleNumber],
-        50, 50, threshold=2,
+        50, 50, threshold=1.7,
         filePath=os.path.join(path, item, "phi6.png"),
         order=6, drawPciture=False, returnSumPhi=True
     )
     phiBlue = tools.phi(
         data[redParticleNumber:],
-        50, 50, threshold=1.2,
+        50, 50, threshold=1.0,
         filePath=os.path.join(path, item, "phi3.png"),
         order=3, drawPciture=False, returnSumPhi=True
     )
@@ -107,8 +109,8 @@ im = ax.imshow(
 )
 
 # Centered ticks: use integer indices (0..Nx-1, 0..Ny-1)
-ax.set_xticks(np.arange(1,Nx-1,2))
-ax.set_yticks(np.arange(1,Ny-1,2))
+ax.set_xticks(np.arange(2,Nx-1,4))
+ax.set_yticks(np.arange(2,Ny-1,4))
 
 # Label ticks with actual parameter values
 # (format as you like; here keep raw or use f"{v:.3g}")

@@ -2,8 +2,10 @@ import tools
 import os
 import numpy as np
 import matplotlib.pyplot as plt
+import sys
 
-path="../conf-data/"
+# path="../conf-data/"
+path=sys.argv[1]
 items=os.listdir(path)
 items=[item for item in items if item.startswith("N")]
 items=sorted(items,key=lambda x:
@@ -16,7 +18,7 @@ items=sorted(items,key=lambda x:
 N=[]
 for item in items:
     print("item=", item)
-    data=os.path.join(path,item)+"/conf_1000.dat"
+    data=os.path.join(path,item)+"/conf_200.dat"
     data=tools.readFile(data)
     # redParticleNumber,blueParticleNumber,xlim,ylim=tools.readParameter(
     #     os.path.join(path,item)+"/run_cpu.pl",["$Na","$Nb","$Lx","$Ly"])[0]
